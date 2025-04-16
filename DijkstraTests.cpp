@@ -71,6 +71,46 @@ void MoreDijkstraTests(){
 	cout << "Deep Testing Dijkstra Algorithm..." << endl;
 
 	// Your code goes here!
+	// Test 1: graph from assignment
+	Graph *g = new Graph();
+	
+	g->AddNode(1);
+	g->AddNode(2);
+	g->AddNode(3);
+	g->AddNode(4);
+	g->AddNode(5);
+	
+	g->AddEdge(1, 2, 2);
+	g->AddEdge(2, 1, 2);
+	
+	g->AddEdge(2, 3, 13);
+	g->AddEdge(3, 2, 13);
+	g->AddEdge(2, 4, 3);
+	g->AddEdge(4, 2, 3);
+	
+	g->AddEdge(3, 4, 1);
+	g->AddEdge(4, 3, 1);
+	g->AddEdge(3, 5, 3);
+	g->AddEdge(5, 3, 3);
+	
+	g->AddEdge(4, 5, 7);
+	g->AddEdge(5, 4, 7);
+
+	cout <<  "---Graph---" << endl;
+	cout << "\tnodes: " << g->NodesToString() << endl;
+	cout << "\tedges: " << g->EdgesToString() << endl;
+	cout << "---Graph---" << endl << endl;
+
+	nodekey_t start = 1;
+	nodekey_t end = 5;
+
+	cout << "start: " << to_string(start) << "  goal: " << to_string(end) << endl;
+	
+	int ans = dijkstra(start, end, g);
+	cout << "Output from Dijkstra(" << to_string(start) << ", " << to_string(end) << ") => " << ans << endl;
+	assert(ans == 9);
+
+	delete g;
 
 	cout << "DONE Deep Testing Dijkstra Algorithm" << endl;
 }
